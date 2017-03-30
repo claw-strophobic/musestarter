@@ -151,8 +151,10 @@ class Configurator(Gtk.Window):
 		if (not currentProject == ""):
 			if (self.config.has_section(currentProject)):
 				for switch in self.switches:
-					switch.set_active(self.config.getboolean(currentProject, switch.pgm))
-
+					try:
+						switch.set_active(self.config.getboolean(currentProject, switch.pgm))
+					except:
+						switch.set_active(False)
 
 		return
 

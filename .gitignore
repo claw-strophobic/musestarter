@@ -1,0 +1,21 @@
+distribute.txt
+setup.sh
+Install-Dacapo-Windows.odt
+
+#python specific
+*.pyc
+ 
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.tar.gz
+
+BACKUP/**
+TEMP/**
+build/**
+dist/**
+nbproject/**
+.idea/**

@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 #
 # Copyright 2017 Thomas Korell
-import ConfigParser, os, subprocess
+import ConfigParser, os
 import gi
+import shutil, errno
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf
 import gettext
@@ -17,6 +18,7 @@ if not os.path.exists(CONFIGPATH):
 	os.makedirs(CONFIGPATH)
 CONFIG = os.path.expanduser(CONFIGPATH + '/musestarter.cfg')
 PROJECT_EXTENSION = ".med"
+TEXT_EXTENSION = ".odt"
 
 class MyParser(ConfigParser.ConfigParser):
 
@@ -147,10 +149,25 @@ class CopyTemplate(Gtk.Window):
 		rtnValue = True
 		msgLines = ""
 		projectDir = self.projectPath.get_text()
-		newProject = os.path.join(projectDir, self.addProject.get_text())
-		if os.path.isdir(newProject) or os.path.isfile(newProject):
+		newProjectName = self.addProject.get_text()
+		newProject = os.path.join(projectDir, newProjectName)
+		oldProject = get_combo_active_value(self.comboProject)
+		print oldProject
+		if not projectDir or projectDir.strip() == "":
 			rtnValue = False
-			msgLines = _("There is already a Object called " + newProject)
+			msgLines = _("No project-path given")
+		elif not os.path.isdir(projectDir):
+			rtnValue = False
+			msgLines = _("Project-path {0} not found.").format(oldProject.decode('utf-8'))
+		elif not os.path.isfile(oldProject):
+			rtnValue = False
+			msgLines = _("Source {0} not found.").format(oldProject.decode('utf-8'))
+		elif not newProjectName or newProjectName.strip() == "":
+			rtnValue = False
+			msgLines = _("No name for the new project given")
+		elif os.path.isdir(newProject) or os.path.isfile(newProject):
+			rtnValue = False
+			msgLines = _("There is already a Object called {0}").format(newProject.decode('utf-8'))
 		if not rtnValue:
 			dlg = Gtk.MessageDialog(self,
 				type=Gtk.MessageType.ERROR,
@@ -162,26 +179,69 @@ class CopyTemplate(Gtk.Window):
 
 		return rtnValue
 
+	def copyAnything(self, src, dst):
+		try:
+			shutil.copytree(src, dst)
+		except OSError as exc: # python >2.5
+			if exc.errno == errno.ENOTDIR:
+				shutil.copy(src, dst)
+			else: raise
+
+	def renameSomeFiles(self):
+		projectDir = self.projectPath.get_text()
+		newProjectName = self.addProject.get_text()
+		newProject = os.path.join(projectDir, newProjectName)
+		oldProjectName = get_combo_active_key(self.comboProject)
+		try:
+			oldMuseFile = os.path.join(newProject, oldProjectName+PROJECT_EXTENSION)
+			newMuseFile = os.path.join(newProject, newProjectName+PROJECT_EXTENSION)
+			print "Rename: ", oldMuseFile, newMuseFile
+			os.rename(oldMuseFile, newMuseFile)
+		except:
+			raise
+		# "libreoffice": "/usr/bin/libreoffice;--nologo;--writer;%projectdir%/Text/%project%.odt",
+		try:
+			oldTextFile = os.path.join(newProject, "Text", oldProjectName+TEXT_EXTENSION)
+			newTextFile = os.path.join(newProject, "Text", newProjectName+TEXT_EXTENSION)
+			if os.path.isfile(oldTextFile):
+				print "Rename: ", oldTextFile, newTextFile
+				os.rename(oldTextFile, newTextFile)
+			else:
+				print "creating: ", newTextFile
+				if not os.path.isdir(os.path.dirname(newTextFile)):
+					os.mkdir(os.path.dirname(newTextFile))
+				touch(newTextFile)
+		except:
+			raise
+
 	def on_apply(self, obj):
 		if not self.checkInput():
 			return False
 
-		currentProject = get_combo_active_value(self.comboProject)
-		projectname = os.path.splitext(os.path.basename(currentProject))[0]
 		if (not self.config.has_section('global')):
 			# Create non-existent section
 			self.config.add_section('global')
 		self.config.set('global', 'projectpath', self.projectPath.get_text())
-		self.config.set('global', 'lastproject', currentProject)
 
 		if (not self.config.has_section('projects')):
 			self.config.add_section('projects')
 		for k in self.projects.iterkeys():
 			self.config.set('projects', k, self.projects[k])
 
-		if (not currentProject == ""):
-			if (not self.config.has_section(currentProject)):
-				self.config.add_section(currentProject)
+		projectDir = self.projectPath.get_text()
+		newProjectName = self.addProject.get_text()
+		newProject = os.path.join(projectDir, newProjectName)
+
+		oldProject = os.path.dirname(get_combo_active_value(self.comboProject))
+		combo_iter = self.comboProject.get_active_iter()
+		print "Old: ", oldProject
+		print "New: ", newProject
+		try:
+			self.copyAnything(oldProject, newProject)
+			self.renameSomeFiles()
+			self.config.set('projects', newProjectName, os.path.join(newProject, newProjectName+PROJECT_EXTENSION))
+		except:
+			raise
 
 		with open(CONFIG, 'wb') as configfile:
 			self.config.write(configfile)
@@ -235,6 +295,18 @@ def get_combo_active_value(combo):
 		ret_val = model.get_value(combo_iter, 0)
 	return ret_val
 
+def get_combo_active_key(combo):
+	ret_val = ''
+	model = combo.get_model()
+	combo_iter = combo.get_active_iter()
+	if combo_iter is not None:
+		##ret_val = model[combo_iter][1]
+		ret_val = model.get_value(combo_iter, 1)
+	return ret_val
+
+def touch(path):
+	with open(path, 'a'):
+		os.utime(path, None)
 
 win = CopyTemplate()
 win.connect("delete-event", Gtk.main_quit)

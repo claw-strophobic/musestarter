@@ -10,21 +10,21 @@ import subprocess
 import time
 import jackproject
 
-t = gettext.translation('dacapo', "/usr/share/locale/")
+t = gettext.translation('jackproject', "/usr/share/locale/")
 t.install()
 _ = t.ugettext
 
-argparser = myArg.ArgumentParser(description=_(u'Liest die Session-Datei von QJackCTL aus und verbindet die Kanäle.'))
-argparser.add_argument("-p", "--project", help=_('Projektname'))
-argparser.add_argument("-d", "--projectdir", help=_('Projektverzeichnis'))
-argparser.add_argument("--muse", type=int, help=_('starte MusE 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--hydrogen", type=int, help=_('starte hydrogen 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--yoshimi", type=int, help=_('starte yoshimi 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--aeolus", type=int, help=_('starte aeolus 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--seq24", type=int, help=_('starte seq24 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--lingot", type=int, help=_('starte lingot 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--libreoffice", type=int, help=_('starte libreoffice 0/1'), choices=[0, 1], default=0)
-argparser.add_argument("--calfjackhost", type=int, help=_('starte Calf-Effekte 0/1'), choices=[0, 1], default=0)
+argparser = myArg.ArgumentParser(description=_('Reads the session-file (xml) from QJackCTL and connects the channels.'))
+argparser.add_argument("-p", "--project", help=_('Projectname'))
+argparser.add_argument("-d", "--projectdir", help=_('Project-directory'))
+argparser.add_argument("--muse", type=int, help=_('start MusE 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--hydrogen", type=int, help=_('start hydrogen 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--yoshimi", type=int, help=_('start yoshimi 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--aeolus", type=int, help=_('start aeolus 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--seq24", type=int, help=_('start seq24 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--lingot", type=int, help=_('start lingot 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--libreoffice", type=int, help=_('start libreoffice 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--calfjackhost", type=int, help=_('start calf-effects 0/1'), choices=[0, 1], default=0)
 
 class StartJackProject(object):
 
@@ -44,7 +44,7 @@ class StartJackProject(object):
 			sessionDir = myargs.projectdir
 
 		if (project is None) or (sessionDir is None):
-			print  >> sys.stderr, "\n\n"+_(u'Kein Projektname und/oder kein Projektverzeichnis gegeben!')+"\n\n "
+			print  >> sys.stderr, "\n\n"+_('No projectname and/or no project-directory given!')+"\n\n "
 			exit()
 
 		# Starting the elemtary Jack-Programs
@@ -56,7 +56,7 @@ class StartJackProject(object):
 			for filename in os.listdir(sessionDir+"/Calf-Effekte/"):
 				text = '/usr/bin/calfjackhost;--client;calf_%name%;'.replace("%name%", os.path.basename(filename)) + \
 					'--load;%name%'.replace("%name%", sessionDir+"/Calf-Effekte/"+filename)
-				print('Starte: {!s}'.format(text))
+				print('Starting: {!s}'.format(text))
 				args = text.split(';')
 				p = subprocess.Popen(args)
 
@@ -69,12 +69,12 @@ class StartJackProject(object):
 			if hasattr(myargs, pgm):
 				attr = getattr(myargs, pgm)
 			if (attr == 0):
-				print('Programm: {!s} soll nicht gestartet werden'.format(pgm))
+				print('Program: {!s} shall not be startet'.format(pgm))
 				continue
 			if (self.get_pid(pgm) == 0):
 				text = self.START_OPT[pgm].replace('%projectdir%', sessionDir)
 				text = text.replace('%project%', project)
-				print('Starte: {!s}'.format(text))
+				print('Starting: {!s}'.format(text))
 				args = text.split(';')
 				p = subprocess.Popen(args)
 

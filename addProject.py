@@ -8,10 +8,9 @@ import shutil, errno
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf
 import gettext
-t = gettext.translation('dacapo', "/usr/share/locale/")
+t = gettext.translation('jackproject', "/usr/share/locale/")
 t.install()
 _ = t.ugettext
-
 
 CONFIGPATH = os.path.expanduser('~/.config/MusEStarter')
 if not os.path.exists(CONFIGPATH):
@@ -61,10 +60,10 @@ class CopyTemplate(Gtk.Window):
 			set_combo_active_value(self.comboProject, self.config.get('global', 'lastproject', ""))
 
 		# Build the starter-button
-		self.apply_button = Gtk.Button(_("Apply"))
+		self.apply_button = Gtk.Button(_("Copy"))
 		self.apply_button.set_sensitive(True)
 		self.apply_button.connect('clicked', self.on_apply)
-		self.apply_button.set_tooltip_text(_("Click here to see a preview of this field."))
+		self.apply_button.set_tooltip_text(_("Click here copy the selected project."))
 		self.apply_button.set_size_request(100, 30);
 		hbox = Gtk.Box(spacing=10)
 		hbox.pack_end(self.apply_button, False, False, 0)
@@ -75,7 +74,7 @@ class CopyTemplate(Gtk.Window):
 		return
 
 	def buildAddProjectBox(self):
-		self.labelAddProject = Gtk.Label("New Project:", xalign=0)
+		self.labelAddProject = Gtk.Label(_("New Project:"), xalign=0)
 		self.grid.attach_next_to(self.labelAddProject, self.labelProject, Gtk.PositionType.BOTTOM, 1, 1)
 		self.addProject = Gtk.Entry()
 		self.addProject.set_editable(True)
@@ -83,7 +82,7 @@ class CopyTemplate(Gtk.Window):
 		return
 
 	def buildProjectSelectionBox(self):
-		self.labelProject = Gtk.Label("Project:", xalign=0)
+		self.labelProject = Gtk.Label(_("Project:"), xalign=0)
 		self.grid.attach_next_to(self.labelProject, self.labelPath, Gtk.PositionType.BOTTOM, 1, 1)
 		self.comboProject = get_simple_combo(self.projects)
 		self.comboProject.set_tooltip_text(_("Select a project here."))
@@ -92,7 +91,7 @@ class CopyTemplate(Gtk.Window):
 		return
 
 	def buildHeaderBox(self):
-		self.labelPath = Gtk.Label("Project-path:", xalign=0)
+		self.labelPath = Gtk.Label(_("Project-path:"), xalign=0)
 		self.grid.add(self.labelPath)
 		self.projectPath = Gtk.Entry()
 		self.projectPath.set_editable(False)

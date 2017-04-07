@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: jackproject\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-07 13:53+0200\n"
+"PO-Revision-Date: 2017-04-07 14:22+0200\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: getsession.py:16 build/scripts-2.7/getsession.py:16
+#: build/scripts-2.7/startJackProject.py:17 getsession.py:16
+#: build/scripts-2.7/getsession.py:16 build/scripts-2.7/startJackProject.py:17
+msgid "Liest die Session-Datei von QJackCTL aus und verbindet die Kanäle."
+msgstr ""
+
+#: getsession.py:17 build/scripts-2.7/getsession.py:17
+#: build/scripts-2.7/startJackProject.py:18 getsession.py:17
+#: build/scripts-2.7/getsession.py:17 build/scripts-2.7/startJackProject.py:18
+msgid "Projektname"
+msgstr ""
+
+#: getsession.py:18 build/scripts-2.7/getsession.py:18
+#: build/scripts-2.7/startJackProject.py:19 getsession.py:18
+#: build/scripts-2.7/getsession.py:18 build/scripts-2.7/startJackProject.py:19
+msgid "Projektverzeichnis"
+msgstr ""
+
+#: openProject.py:40 build/scripts-2.7/openProject.py:40 openProject.py:40
+#: build/scripts-2.7/openProject.py:40
+msgid "MusE-Project-Starter"
+msgstr ""
+
+#: openProject.py:67 build/scripts-2.7/openProject.py:67 openProject.py:67
+#: build/scripts-2.7/openProject.py:67
+msgid "Apply"
+msgstr ""
+
+#: openProject.py:70 build/scripts-2.7/openProject.py:70 openProject.py:70
+#: build/scripts-2.7/openProject.py:70
+msgid "Click here to see a preview of this field."
+msgstr ""
+
+#: openProject.py:84 addProject.py:85 build/scripts-2.7/openProject.py:84
+#: build/scripts-2.7/addProject.py:85 openProject.py:84 addProject.py:85
+#: build/scripts-2.7/openProject.py:84 build/scripts-2.7/addProject.py:85
+msgid "Project:"
+msgstr ""
+
+#: openProject.py:87 addProject.py:88 build/scripts-2.7/openProject.py:87
+#: build/scripts-2.7/addProject.py:88 openProject.py:87 addProject.py:88
+#: build/scripts-2.7/openProject.py:87 build/scripts-2.7/addProject.py:88
+msgid "Select a project here."
+msgstr ""
+
+#: openProject.py:94 addProject.py:94 build/scripts-2.7/openProject.py:94
+#: build/scripts-2.7/addProject.py:94 openProject.py:94 addProject.py:94
+#: build/scripts-2.7/openProject.py:94 build/scripts-2.7/addProject.py:94
+msgid "Project-path:"
+msgstr ""
+
+#: openProject.py:100 addProject.py:100 build/scripts-2.7/openProject.py:100
+#: build/scripts-2.7/addProject.py:100 openProject.py:100 addProject.py:100
+#: build/scripts-2.7/openProject.py:100 build/scripts-2.7/addProject.py:100
+msgid "Open"
+msgstr ""
+
+#: openProject.py:103 addProject.py:103 build/scripts-2.7/openProject.py:103
+#: build/scripts-2.7/addProject.py:103 openProject.py:103 addProject.py:103
+#: build/scripts-2.7/openProject.py:103 build/scripts-2.7/addProject.py:103
+msgid "Click here to open the project-directory."
+msgstr ""
+
+#: openProject.py:107 addProject.py:107 build/scripts-2.7/openProject.py:107
+#: build/scripts-2.7/addProject.py:107 openProject.py:107 addProject.py:107
+#: build/scripts-2.7/openProject.py:107 build/scripts-2.7/addProject.py:107
+msgid "Scan"
+msgstr ""
+
+#: openProject.py:110 addProject.py:110 build/scripts-2.7/openProject.py:110
+#: build/scripts-2.7/addProject.py:110 openProject.py:110 addProject.py:110
+#: build/scripts-2.7/openProject.py:110 build/scripts-2.7/addProject.py:110
+msgid "Click here to scan the project-directory for projects."
+msgstr ""
+
+#: openProject.py:119 build/scripts-2.7/openProject.py:119 openProject.py:119
+#: build/scripts-2.7/openProject.py:119
+msgid "Start programs:"
+msgstr ""
+
+#: openProject.py:126 build/scripts-2.7/openProject.py:126 openProject.py:126
+#: build/scripts-2.7/openProject.py:126
+msgid "Start the program "
+msgstr ""
+
+#: openProject.py:211 addProject.py:252 build/scripts-2.7/openProject.py:211
+#: build/scripts-2.7/addProject.py:252 openProject.py:211 addProject.py:252
+#: build/scripts-2.7/openProject.py:211 build/scripts-2.7/addProject.py:252
+msgid "Open Project-Directory"
+msgstr ""
+
+#: startJackProject.py:17 startJackProject.py:17
+msgid "Reads the session-file (xml) from QJackCTL and connects the channels."
+msgstr ""
+
+#: startJackProject.py:18 startJackProject.py:18
+msgid "Projectname"
+msgstr ""
+
+#: startJackProject.py:19 startJackProject.py:19
+msgid "Project-directory"
+msgstr ""
+
+#: startJackProject.py:20 startJackProject.py:20
+msgid "start MusE 0/1"
+msgstr ""
+
+#: startJackProject.py:21 startJackProject.py:21
+msgid "start hydrogen 0/1"
+msgstr ""
+
+#: startJackProject.py:22 startJackProject.py:22
+msgid "start yoshimi 0/1"
+msgstr ""
+
+#: startJackProject.py:23 startJackProject.py:23
+msgid "start aeolus 0/1"
+msgstr ""
+
+#: startJackProject.py:24 startJackProject.py:24
+msgid "start seq24 0/1"
+msgstr ""
+
+#: startJackProject.py:25 startJackProject.py:25
+msgid "start lingot 0/1"
+msgstr ""
+
+#: startJackProject.py:26 startJackProject.py:26
+msgid "start libreoffice 0/1"
+msgstr ""
+
+#: startJackProject.py:27 startJackProject.py:27
+msgid "start calf-effects 0/1"
+msgstr ""
+
+#: startJackProject.py:47 startJackProject.py:47
+msgid "No projectname and/or no project-directory given!"
+msgstr ""
+
+#: addProject.py:35 build/scripts-2.7/addProject.py:35 addProject.py:35
+#: build/scripts-2.7/addProject.py:35
+msgid "Copy MusE-Project"
+msgstr ""
+
+#: addProject.py:63 build/scripts-2.7/addProject.py:63 addProject.py:63
+#: build/scripts-2.7/addProject.py:63
+msgid "Copy"
+msgstr ""
+
+#: addProject.py:66 build/scripts-2.7/addProject.py:66 addProject.py:66
+#: build/scripts-2.7/addProject.py:66
+msgid "Click here copy the selected project."
+msgstr ""
+
+#: addProject.py:77 build/scripts-2.7/addProject.py:77 addProject.py:77
+#: build/scripts-2.7/addProject.py:77
+msgid "New Project:"
+msgstr ""
+
+#: addProject.py:157 build/scripts-2.7/addProject.py:157 addProject.py:157
+#: build/scripts-2.7/addProject.py:157
+msgid "No project-path given"
+msgstr ""
+
+#: addProject.py:160 build/scripts-2.7/addProject.py:160 addProject.py:160
+#: build/scripts-2.7/addProject.py:160
+#, python-brace-format
+msgid "Project-path {0} not found."
+msgstr ""
+
+#: addProject.py:163 build/scripts-2.7/addProject.py:163 addProject.py:163
+#: build/scripts-2.7/addProject.py:163
+#, python-brace-format
+msgid "Source {0} not found."
+msgstr ""
+
+#: addProject.py:166 build/scripts-2.7/addProject.py:166 addProject.py:166
+#: build/scripts-2.7/addProject.py:166
+msgid "No name for the new project given"
+msgstr ""
+
+#: addProject.py:169 build/scripts-2.7/addProject.py:169 addProject.py:169
+#: build/scripts-2.7/addProject.py:169
+#, python-brace-format
+msgid "There is already a Object called {0}"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:20
+#: build/scripts-2.7/startJackProject.py:20
+msgid "starte MusE 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:21
+#: build/scripts-2.7/startJackProject.py:21
+msgid "starte hydrogen 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:22
+#: build/scripts-2.7/startJackProject.py:22
+msgid "starte yoshimi 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:23
+#: build/scripts-2.7/startJackProject.py:23
+msgid "starte aeolus 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:24
+#: build/scripts-2.7/startJackProject.py:24
+msgid "starte seq24 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:25
+#: build/scripts-2.7/startJackProject.py:25
+msgid "starte lingot 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:26
+#: build/scripts-2.7/startJackProject.py:26
+msgid "starte libreoffice 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:27
+#: build/scripts-2.7/startJackProject.py:27
+msgid "starte Calf-Effekte 0/1"
+msgstr ""
+
+#: build/scripts-2.7/startJackProject.py:47
+#: build/scripts-2.7/startJackProject.py:47
+msgid "Kein Projektname und/oder kein Projektverzeichnis gegeben!"
+msgstr ""

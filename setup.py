@@ -24,16 +24,18 @@ class jackproject_install(install):
 
 	def install_translations(self):
 		print "copy translations"
-		for root, dirs, files in os.walk('./jackproject/locale/*.mo'):
+		for root, dirs, files in os.walk('./jackproject/locale/'):
 			for filename in files:
-				src_file = os.path.join(root, filename)
-				man_root = os.path.join(self.localprefix, \
-					root.replace('./jackproject/locale/', ''))
-				dest_file = os.path.join(man_root, filename)
-				if not os.path.exists(man_root):
-					os.makedirs(man_root)
-				print("copy %s -> %s " % (src_file, dest_file))
-				shutil.copy(src_file, dest_file)
+				basename, file_extension = os.path.splitext(filename)
+				if file_extension == ".mo":
+					src_file = os.path.join(root, filename)
+					man_root = os.path.join(self.localprefix, \
+						root.replace('./jackproject/locale/', ''))
+					dest_file = os.path.join(man_root, filename)
+					if not os.path.exists(man_root):
+						os.makedirs(man_root)
+					print("copy %s -> %s " % (src_file, dest_file))
+					shutil.copy(src_file, dest_file)
 
 	def run(self):
 		install.run(self)

@@ -7,11 +7,10 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf
 import gettext
-t = gettext.translation('dacapo', "/usr/share/locale/")
+t = gettext.translation('jackproject', "/usr/share/locale/")
 t.install()
 _ = t.ugettext
 import jackproject
-
 
 CONFIGPATH = os.path.expanduser('~/.config/MusEStarter')
 if not os.path.exists(CONFIGPATH):
@@ -82,7 +81,7 @@ class Configurator(Gtk.Window):
 
 	def buildProjectSelectionBox(self):
 		hProjectSelectionBox = Gtk.Box(spacing=10)
-		labelPath = Gtk.Label("Project:", xalign=0)
+		labelPath = Gtk.Label(_("Project:"), xalign=0)
 		hProjectSelectionBox.pack_start(labelPath, False, False, 0)
 		self.comboProject = get_simple_combo(self.projects)
 		self.comboProject.set_tooltip_text(_("Select a project here."))
@@ -92,7 +91,7 @@ class Configurator(Gtk.Window):
 
 	def buildHeaderBox(self):
 		hHeaderbox = Gtk.Box(spacing=10)
-		labelPath = Gtk.Label("Project-path:", xalign=0)
+		labelPath = Gtk.Label(_("Project-path:"), xalign=0)
 		hHeaderbox.pack_start(labelPath, False, False, 0)
 		self.projectPath = Gtk.Entry()
 		self.projectPath.set_editable(False)
@@ -117,7 +116,7 @@ class Configurator(Gtk.Window):
 		i = 0
 		labels = []
 		self.switches = []
-		labels.append(Gtk.Label("Programme starten:", xalign=0))
+		labels.append(Gtk.Label(_("Start programs:"), xalign=0))
 		self.grid.add(labels[i])
 		lastLabelLeft = labels[i]
 		for pgm in self.START_OPT:

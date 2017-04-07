@@ -10,6 +10,7 @@ import gettext
 t = gettext.translation('dacapo', "/usr/share/locale/")
 t.install()
 _ = t.ugettext
+import jackproject
 
 
 CONFIGPATH = os.path.expanduser('~/.config/MusEStarter')
@@ -33,16 +34,8 @@ class MyParser(ConfigParser.ConfigParser):
 
 
 class Configurator(Gtk.Window):
-	START_OPT = {
-		"muse": "/usr/bin/muse;-J;%projectdir%/%project%.med",
-		"hydrogen": "/usr/bin/hydrogen;--song=%projectdir%/Hydrogen/drums.h2song",
-		"yoshimi": "/usr/bin/yoshimi;--state=%projectdir%/Yoshimi/yoshimi.state",
-		"aeolus": "/usr/bin/aeolus",
-		"seq24": "/usr/bin/seq24;%projectdir%/Seq24/seq.midi",
-		"lingot": "/usr/bin/lingot",
-		"libreoffice": "/usr/bin/libreoffice;--nologo;--writer;%projectdir%/Text/%project%.odt",
-		"calfjackhost": "",
-	}
+
+	START_OPT = jackproject.START_OPT
 
 	def __init__(self):
 		Gtk.Window.__init__(self, title=_("MusE-Project-Starter"))

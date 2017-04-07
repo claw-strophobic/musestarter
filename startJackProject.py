@@ -8,6 +8,7 @@ import argparse as myArg
 import gettext
 import subprocess
 import time
+import jackproject
 
 t = gettext.translation('dacapo', "/usr/share/locale/")
 t.install()
@@ -26,15 +27,8 @@ argparser.add_argument("--libreoffice", type=int, help=_('starte libreoffice 0/1
 argparser.add_argument("--calfjackhost", type=int, help=_('starte Calf-Effekte 0/1'), choices=[0, 1], default=0)
 
 class StartJackProject(object):
-	START_OPT = {
-		"muse": "/usr/bin/muse;-J;%projectdir%/%project%.med",
-		"hydrogen": "/usr/bin/hydrogen;--song=%projectdir%/Hydrogen/drums.h2song",
-		"yoshimi": "/usr/bin/yoshimi;--state=%projectdir%/Yoshimi/yoshimi.state",
-		"aeolus": "/usr/bin/aeolus",
-		"seq24": "/usr/bin/seq24;%projectdir%/Seq24/seq.midi",
-		"lingot": "/usr/bin/lingot",
-		"libreoffice": "/usr/bin/libreoffice;--nologo;--writer;%projectdir%/Text/%project%.odt",
-	}
+
+	START_OPT = jackproject.START_OPT
 	GET_SESSION = "/usr/local/bin/getsession.py;--project=%project%;--projectdir=%projectdir%"
 
 	def runSession(self):

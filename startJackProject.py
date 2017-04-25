@@ -48,6 +48,8 @@ class StartJackProject(object):
 			exit()
 
 		# Starting the elemtary Jack-Programs
+		if (self.get_pid('jack') == 0):
+			p = subprocess.Popen('/usr/bin/jackd')
 		if (self.get_pid('qjackctl') == 0):
 			p = subprocess.Popen('/usr/bin/qjackctl')
 		if (self.get_pid('a2jmidi_bridge') == 0):

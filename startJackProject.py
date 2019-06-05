@@ -25,6 +25,7 @@ argparser.add_argument("--seq24", type=int, help=_('start seq24 0/1'), choices=[
 argparser.add_argument("--lingot", type=int, help=_('start lingot 0/1'), choices=[0, 1], default=0)
 argparser.add_argument("--libreoffice", type=int, help=_('start libreoffice 0/1'), choices=[0, 1], default=0)
 argparser.add_argument("--calfjackhost", type=int, help=_('start calf-effects 0/1'), choices=[0, 1], default=0)
+argparser.add_argument("--guitarix", type=int, help=_('start guitarix 0/1'), choices=[0, 1], default=0)
 
 class StartJackProject(object):
 
@@ -61,6 +62,9 @@ class StartJackProject(object):
 				print('Starting: {!s}'.format(text))
 				args = text.split(';')
 				p = subprocess.Popen(args)
+
+		if (self.get_pid('guitarix') == 0):
+			p = subprocess.Popen('/usr/bin/guitarix')
 
 		# Wait for everything is ready
 		time.sleep(2)

@@ -5,6 +5,7 @@ START_OPT = {
 	"aeolus": "/usr/bin/aeolus",
 	"seq24": "/usr/bin/seq24;%projectdir%/Seq24/seq.midi",
 	"lingot": "/usr/bin/lingot",
+	"guitarix": "/usr/bin/guitarix",
 	"libreoffice": "/usr/bin/libreoffice;--nologo;--writer;%projectdir%/Text/%project%.odt",
 	"calfjackhost": "",
 }

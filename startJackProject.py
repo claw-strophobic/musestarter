@@ -63,9 +63,6 @@ class StartJackProject(object):
 				args = text.split(';')
 				p = subprocess.Popen(args)
 
-		if (self.get_pid('guitarix') == 0):
-			p = subprocess.Popen('/usr/bin/guitarix')
-
 		# Wait for everything is ready
 		time.sleep(2)
 
